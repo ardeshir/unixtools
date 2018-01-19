@@ -3,14 +3,15 @@ package main
 import (
    "fmt"
    "flag"
-   "github.com/ardeshir/simple"
+   u "github.com/ardeshir/version"
 )
 
 var debug bool = false
+var version string = "0.0.0"
 
 func main() {
 
-  fmt.Println(simple.Add(1,2))
+
 
    minusO := flag.Bool("o", false, "o")
    minusC := flag.Bool("c", false, "c")
@@ -26,8 +27,9 @@ func main() {
       fmt.Println(index, ":" , val)
    }
 
+ // -----------------  footer ----------- //    
   if debug == true {
-  simple.Version()
+    u.V(version)
   }
 
 }
