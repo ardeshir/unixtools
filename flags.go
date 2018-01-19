@@ -18,18 +18,18 @@ func main() {
    name := flag.String("name", defaultName() , "name of the gopher string flag")
    age  := flag.Int("age", defaultAge(), "Age of gopher int flag")
    
-   minO := flag.Bool("o",  true, "The o bool flag")
+   debug := flag.Bool("d", defaultDebug(), "The d bool flag")
    minC := flag.Bool("c", true, "The c bool flag")
    minK := flag.Int("k", 3, "The k int flag")
 
    flag.Parse()
 
    fmt.Println("\n------- Old Flags ------\n")
-   fmt.Println("-o:", *minO)
+   fmt.Println("-d:", *debug)
    fmt.Println("-c:", *minC)
    fmt.Println("-k:", *minK)
-    fmt.Println("\n------- Values of old flags ------")
-   fmt.Printf("\n -c: %t\n -o: %t\n -k: %d\n", *minC, *minO, *minK)
+   fmt.Println("\n------- Values of old flags ------")
+   fmt.Printf("\n -c: %t\n -d: %t\n -k: %d\n", *minC, *debug, *minK)
    
    fmt.Println("\n------- New Flags ------\n")
    fmt.Println("name: ", *name)
@@ -40,7 +40,7 @@ func main() {
    }
 
   // -----------------  footer ----------- //    
-  if debug == true {
+  if *debug   {
      u.V(version)
   }
 
@@ -61,4 +61,20 @@ func defaultAge() int {
         }
     }
     return 27
+}
+
+func defaultDebug() bool {
+    
+    if os.Getenv("DEFAULT_DEBUG") != "" {
+        debug, err := strconv.ParseBool(os.Getenv("DEFAULT_DEBUG") )
+        
+        if err == nil {
+            return debug
+        }
+        fmt.Printf("DEBUG value: %v\n", debug)
+    }
+    
+    
+    fmt.Printf("DEBUG value: %v\n", debug)
+    return false
 }
