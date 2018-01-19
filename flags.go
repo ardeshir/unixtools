@@ -11,16 +11,16 @@ import (
 var ( 
     debug bool = false
     version string = "0.0.1"
-    )
+    ) 
 
 func main() {
 
-   name := flag.String("name", defaultName() , "name of the gopher string flag")
-   age  := flag.Int("age", defaultAge(), "Age of gopher int flag")
+   name  := flag.String("name", defaultName() , "name of the gopher string flag")
+   age   := flag.Int("age", defaultAge(), "Age of gopher int flag")
    
    debug := flag.Bool("d", defaultDebug(), "The d bool flag")
-   minC := flag.Bool("c", true, "The c bool flag")
-   minK := flag.Int("k", 3, "The k int flag")
+   minC  := flag.Bool("c", true, "The c bool flag")
+   minK  := flag.Int("k", 3, "The k int flag")
 
    flag.Parse()
 
