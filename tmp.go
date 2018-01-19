@@ -36,8 +36,10 @@ func main() {
    // ========================================//
    //  Create file with os.Create()
    createFile()
-
-
+   deleteFile() 
+   // checkExistence() 
+   
+   
   // -----------------  footer ----------- //    
   if debugTrue() {
     u.V(version)
@@ -45,8 +47,7 @@ func main() {
 
 }
 
-
-
+// Function to create a file 
 func createFile() {
     f, err := os.Create("testfile1.txt")
     u.ErrNil(err, "Unable to create file")
@@ -54,7 +55,27 @@ func createFile() {
     log.Printf("Created %s\n", f.Name())
 }
 
+// Function to delete a file 
+func deleteFile() {
+     // createFile()  // use the createFile first, then delete file
+     checkExistence()
+     err := os.Remove("testfile1.txt")
+     u.ErrNil(err, "Unable to remove testfile1.txt")
+     log.Println("Deleted testfile1.txt")
+}
 
+func checkExistence() {
+    // createFile()
+    fi, err := os.Stat("testfile1.txt")
+    if err != nil {
+        if os.IsNotExist(err) {
+           log.Fatalln("File: testfile1.txt does not exist")
+        } 
+    } 
+    
+    log.Printf("Exists, last modified %v\n", fi.ModTime())
+    // deleteFile()
+}
 
 
 // Function to check env variable DEFAULT_DEBUG bool
