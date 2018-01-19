@@ -41,7 +41,7 @@ func main() {
 
   // -----------------  footer ----------- //    
   if *debug   {
-     u.V(version)
+     u.V(defaultVersion())
   }
 
 }
@@ -77,4 +77,15 @@ func defaultDebug() bool {
     
     fmt.Printf("DEBUG value: %v\n", debug)
     return false
+}
+
+// Function to check env variable DEFAULT_VERSION string
+func defaultVersion() string {
+
+ if os.Getenv("DEFAULT_VERSION") != "" {
+     return os.Getenv("DEFAULT_VERSION")
+  }    
+  
+    var version string = "0.0.1"
+ return version 
 }
