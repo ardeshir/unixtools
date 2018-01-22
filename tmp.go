@@ -17,21 +17,34 @@ var (
 func main() {
 
     filename    := flag.String("file", defaultFile(), "Name of file to play with")
-    newfilename := flag.String("newfile", defaultFile2(), "Name of file to play with")
+    // newfilename := flag.String("newfile", defaultFile2(), "Name of file to play with")
     flag.Parse()
     
 
-     createFile(*filename)
-     // deleteFile(*filename) 
+     // createFile(*filename)
+      deleteFile(*filename) 
      // checkExistence(*filename) 
      // renameFile(*filename, "newfiletest.txt")
-     copyFile(*filename, *newfilename)
-     deleteFile(*newfilename)
-  
+     // copyFile(*filename, *newfilename)
+     // deleteFile(*newfilename)
+     writeToFile(*filename)
+      
   if debugTrue() {
     u.V(version)
   }
 
+}
+func writeToFile(filename string) {
+    f, err := os.Create(filename)
+    u.ErrNil(err, "Can't create new file")
+    
+    defer f.Close()
+    
+    if _, err := f.Write([]byte("Errors are values.\n")); err != nil {
+        log.Fatalln(err)
+    }
+    
+    log.Println("Done\n")
 }
 
 // Function to copy a file
