@@ -17,6 +17,7 @@ var (
 func main() {
 
     filename    := flag.String("file", defaultFile(), "Name of file to play with")
+    text        := flag.String("text", "This will be printed", "something goes here")
     // newfilename := flag.String("newfile", defaultFile2(), "Name of file to play with")
     flag.Parse()
     
@@ -27,20 +28,20 @@ func main() {
      // renameFile(*filename, "newfiletest.txt")
      // copyFile(*filename, *newfilename)
      // deleteFile(*newfilename)
-     writeToFile(*filename)
+     writeToFile(*filename, *text)
       
   if debugTrue() {
     u.V(version)
   }
 
 }
-func writeToFile(filename string) {
+func writeToFile(filename string, text string) {
     f, err := os.Create(filename)
     u.ErrNil(err, "Can't create new file")
     
     defer f.Close()
     
-    if _, err := f.Write([]byte("Errors are values.\n")); err != nil {
+    if _, err := f.Write([]byte(text)); err != nil {
         log.Fatalln(err)
     }
     
