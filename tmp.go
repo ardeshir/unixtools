@@ -70,7 +70,6 @@ func copyFile(filename string, newfilename string) {
 }
 
 
-
 // Function to rename a file
 func renameFile ( filename string, newname string) {
         checkExistence(filename)

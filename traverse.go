@@ -20,6 +20,8 @@ func walkFunction(path string, info os.FileInfo, err error) error {
 func main() {
 
 	args := os.Args
+	
+	fmt.Println(args[0]);
 
 	if len(args) == 1 {
 		fmt.Println("Not enough arguments!")
