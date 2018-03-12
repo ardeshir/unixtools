@@ -16,22 +16,19 @@ var (
 
 func main() {
 
-    filename    := flag.String("file", defaultFile(), "Name of 1st file to use with createFile() ")
-    text        := flag.String("text", "This default text will be printed\n", "Some text goes here")
-    newfilename := flag.String("newfile", defaultFile2(), "Name of 2nd file use with createFile() ")
+    filename    := flag.String("file", defaultFile(), "Name of file to play with")
+    text        := flag.String("text", "This will be printed", "something goes here")
+    // newfilename := flag.String("newfile", defaultFile2(), "Name of file to play with")
     flag.Parse()
     
-     deleteFile(*filename)
-     // delete file used the checkExistance before deleting.
+
+     // createFile(*filename)
+      deleteFile(*filename) 
      // checkExistence(*filename) 
-     createFile(*filename)
-     // deleteFile(*filename)
-     writeToFile(*filename, *text)
      // renameFile(*filename, "newfiletest.txt")
-     copyFile(*filename, *newfilename)
-     renameFile(*newfilename, "newfiletest2.txt")
+     // copyFile(*filename, *newfilename)
      // deleteFile(*newfilename)
-     // writeToFile(*filename, *text)
+     writeToFile(*filename, *text)
       
   if debugTrue() {
     u.V(version)

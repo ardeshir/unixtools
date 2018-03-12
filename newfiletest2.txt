@@ -1,1 +1,1 @@
-Something even new will be written\n
+This default text will be printed
