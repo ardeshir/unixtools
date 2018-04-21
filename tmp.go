@@ -29,7 +29,7 @@ func main() {
      writeToFile(*filename, *text)
      // renameFile(*filename, "newfiletest.txt")
      copyFile(*filename, *newfilename)
-     renameFile(*newfilename, "newfiletest2.txt")
+     // renameFile(*newfilename, "newfiletest2.txt")
      // deleteFile(*newfilename)
      // writeToFile(*filename, *text)
       
